@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="MyTrave1">
 <meta property="og:description" content="1.1状态空间变量及状态空间表达式一、状态变量足以完全表征系统运动状态的最少个数的一组变量，称为状态变量 完全表征：只要给出状态变量的初值$x(t_0)$以及$t\ge t_0$的输入$u(t)$，就能够完全确定系统在时间$t\ge t_0$的动态行为。 说明：  状态变量相互独立 对于实际物理系统来说，状态变量个数等于系统中独立储能元件的个数（电容、电感） 状态变量选取不唯一，但个数确定  二、">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png">
 <meta property="article:published_time" content="2022-01-24T09:37:25.000Z">
-<meta property="article:modified_time" content="2022-01-24T09:46:05.889Z">
+<meta property="article:modified_time" content="2022-01-24T10:34:21.979Z">
 <meta property="article:author" content="wex">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png">
 
 
 <link rel="canonical" href="http://example.com/2022/01/24/modern-control-theory/">
@@ -107,7 +109,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E5%8F%98%E9%87%8F%E5%8F%8A%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">1.1状态空间变量及状态空间表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">一、状态变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%8A%B6%E6%80%81%E5%90%91%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">二、状态向量</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E5%8F%98%E9%87%8F%E5%8F%8A%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">1.1状态空间变量及状态空间表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">一、状态变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%8A%B6%E6%80%81%E5%90%91%E9%87%8F"><span class="nav-number">1.2.</span> <span class="nav-text">二、状态向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4"><span class="nav-number">1.3.</span> <span class="nav-text">三、状态空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">四、状态方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BE%93%E5%87%BA%E6%96%B9%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">五、输出方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">六、状态空间表达式</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,7 +187,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-01-24 17:37:25 / Modified: 17:46:05" itemprop="dateCreated datePublished" datetime="2022-01-24T17:37:25+08:00">2022-01-24</time>
+      <time title="Created: 2022-01-24 17:37:25 / Modified: 18:34:21" itemprop="dateCreated datePublished" datetime="2022-01-24T17:37:25+08:00">2022-01-24</time>
     </span>
 
   
@@ -207,6 +209,30 @@
 <li>状态变量选取不唯一，但个数确定</li>
 </ul>
 <h4 id="二、状态向量"><a href="#二、状态向量" class="headerlink" title="二、状态向量"></a>二、状态向量</h4><p>由系统<strong>状态变量</strong>构成的向量，称为系统的<strong>状态向量</strong></p>
+<h4 id="三、状态空间"><a href="#三、状态空间" class="headerlink" title="三、状态空间"></a>三、状态空间</h4><p>以状态向量的每一个分量为坐标轴所构成的空间，称为状态空间</p>
+<ul>
+<li>系统任意时刻的状态均可表示为状态空间中的一个点</li>
+<li>系统状态随时间变化的过程，在状态空间中描绘出一条轨迹，称为<strong>状态轨迹</strong></li>
+</ul>
+<h4 id="四、状态方程"><a href="#四、状态方程" class="headerlink" title="四、状态方程"></a>四、状态方程</h4><p>由系统变量构成的描述系统动态过程的一届微分方程组，称为系统的状态方程</p>
+<ol>
+<li>状态方程用于描述系统输入引起系统状态变化的动态过程</li>
+<li>状态方程的一般形式为：$\dot x=Ax+Bu$</li>
+</ol>
+<h4 id="五、输出方程"><a href="#五、输出方程" class="headerlink" title="五、输出方程"></a>五、输出方程</h4><p>​    在指定系统输出y的情况下，输出y向量与状态向量x及系统输入u向量的函数关系，称为系统的<strong>输出方程</strong>。</p>
+<ol>
+<li>系统的状态和输入决定了相同输出的变化</li>
+<li>系统输出方程的一般形式为$y=Cx+Du$</li>
+</ol>
+<h4 id="六、状态空间表达式"><a href="#六、状态空间表达式" class="headerlink" title="六、状态空间表达式"></a>六、状态空间表达式</h4><p>​    <strong>状态方程和输出方程</strong>总和起来，构成对一个系统的完整动态描述，称为系统的<strong>状态空间表达式</strong>。</p>
+<p>​    对于n个状态变量、r个输入、m个输出的动态系统，状态空间表达式的一般形式为<br>$$<br>\dot x=Ax+Bu<br>$$</p>
+<p>$$<br>y=Cx+Du<br>$$</p>
+<p>$A\in R^{n\times n}$ 表征了相同内部状态的联系，称为系统矩阵</p>
+<p>$B\in R^{n\times r}$表征了输入对状态的作用，称为控制矩阵</p>
+<p>$C\in R^{m\times n}$表征了输出与状态变量的关系，称为输出矩阵</p>
+<p>$D\in R^{m\times r}$表征了输出与输入的关系，称为直接传输矩阵</p>
+<p>状态空间表达式可以用系统方框图描述：</p>
+<p><img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png" alt="系统方框图"></p>
 
     </div>
 
