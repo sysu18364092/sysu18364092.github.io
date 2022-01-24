@@ -115,7 +115,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -145,6 +145,79 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/24/modern-control-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyTrave1">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/24/modern-control-theory/" class="post-title-link" itemprop="url">modern_control_theory</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-24 17:37:25 / Modified: 17:46:05" itemprop="dateCreated datePublished" datetime="2022-01-24T17:37:25+08:00">2022-01-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-1状态空间变量及状态空间表达式"><a href="#1-1状态空间变量及状态空间表达式" class="headerlink" title="1.1状态空间变量及状态空间表达式"></a>1.1状态空间变量及状态空间表达式</h3><h4 id="一、状态变量"><a href="#一、状态变量" class="headerlink" title="一、状态变量"></a>一、状态变量</h4><p>足以完全表征系统运动状态的最少个数的一组变量，称为状态变量</p>
+<p>完全表征：只要给出状态变量的初值$x(t_0)$以及$t\ge t_0$的输入$u(t)$，就能够完全确定系统在时间$t\ge t_0$的动态行为。</p>
+<p>说明：</p>
+<ul>
+<li>状态变量相互独立</li>
+<li>对于实际物理系统来说，状态变量个数等于系统中独立储能元件的个数（电容、电感）</li>
+<li>状态变量选取不唯一，但个数确定</li>
+</ul>
+<h4 id="二、状态向量"><a href="#二、状态向量" class="headerlink" title="二、状态向量"></a>二、状态向量</h4><p>由系统<strong>状态变量</strong>构成的向量，称为系统的<strong>状态向量</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -245,7 +318,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-01-24 11:19:27 / Modified: 12:46:13" itemprop="dateCreated datePublished" datetime="2022-01-24T11:19:27+08:00">2022-01-24</time>
+      <time title="Created: 2022-01-24 11:19:27 / Modified: 14:48:17" itemprop="dateCreated datePublished" datetime="2022-01-24T11:19:27+08:00">2022-01-24</time>
     </span>
 
   
@@ -258,15 +331,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>参考：</p>
+          <p>转载：</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72605138">Apollo控制算法LQR分析</a></p>
 <hr>
+<p>（主要是想一边看一边自己敲一遍公式，增强理解）</p>
 <p>LQR(linear quadradic regulator)线性二次型调节器</p>
-<p>考虑如下离散线性系统：<br>$$<br>x_{t+1}=Ax_t+Bu_t,x_0=x^{init}<br>$$<br>LQR的目标就是找到一组控制量u0,u1,…使得</p>
+<p>考虑如下离散线性系统：<br>$$<br>x_{t+1}=Ax_t+Bu_t,x_0=x^{init}\tag{1}<br>$$<br>LQR的目标就是找到一组控制量u0,u1,…使得</p>
 <p>x0,x1,…足够小，即系统达到稳定状态</p>
 <p>u0,u1,…足够小，即<strong>花费最小的控制代价</strong></p>
-<p>为达到上述效果，定义代价函数<br>$$<br>J=\sum_{\tau=0}^{N-1}(x_{\tau}^TQx_{\tau}+u_{\tau}^TRu_{\tau})+x_{N}^TQ_fx_N<br>$$</p>
+<p>为达到上述效果，定义代价函数<br>$$<br>J=\sum_{\tau=0}^{N-1}(x_{\tau}^TQx_{\tau}+u_{\tau}^TRu_{\tau})+x_{N}^TQ_fx_N \tag{2}<br>$$</p>
 <p>其中x为状态量，u为控制量，Q为状态权重矩阵，R为控制权重矩阵，Qf为最终权重矩阵，N为达到最终状态的控制序列数。</p>
+<p>根据代价函数，再定义$V_{tToN}(z)$表示从t时刻的状态z开始，通过最优控制序列获得的到结束后的最小代价。<br>$$<br>V_{tToN}(z)=\min \limits_{u_t,…,u_{N-1}}\sum_{\tau=0}^{N-1}(x_{\tau}^TQx_{\tau}+u_{\tau}^TRu_{\tau})+x_{N}^TQ_fx_N \tag{3}<br>$$<br>根据公式3可得，当t=N时有：<br>$$<br>V_{NToN}(z)=z^TQ_fz\tag{4}<br>$$<br>即$V_{NToN}$只和最终状态有关。可以想到如果t时刻获取最优控制，上一时刻t-1也应该是 最优控制，这样可以通过$V_{NToN}$倒推上一状态的控制来获取控制薛烈。顺着这个思路，相邻两时刻有如下关系：<br>$$<br>V_{NToN}(z)=\min\limits_{\omega}(z^TQz+\omega^TR\omega+V_{(t+1)ToN}(Az+B\omega))\tag{5}<br>$$<br>其中是基于当前时刻状态做出控制$\omega$的代价，是下一时刻到最终时刻的代价。至此，求解最优控制序列转化了动态规划问题</p>
 
       
     </div>
