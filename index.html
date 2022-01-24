@@ -115,7 +115,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -145,6 +145,72 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/24/log/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wex">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/24/log/" class="post-title-link" itemprop="url">log</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-24 13:45:30 / Modified: 13:46:12" itemprop="dateCreated datePublished" datetime="2022-01-24T13:45:30+08:00">2022-01-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>1.24 成功搭建博客</p>
+<p>1.25 解决latex渲染问题</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -196,14 +262,11 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72605138">Apollo控制算法LQR分析</a></p>
 <hr>
 <p>LQR(linear quadradic regulator)线性二次型调节器</p>
-<p>考虑如下离散线性系统：</p>
-<script type="math/tex; mode=display">
-x_{t+1}=Ax_t+Bu_t,x_0=x^{init}</script><p>LQR的目标就是找到一组控制量u0,u1,…使得</p>
+<p>考虑如下离散线性系统：<br>$$<br>x_{t+1}=Ax_t+Bu_t,x_0=x^{init}<br>$$<br>LQR的目标就是找到一组控制量u0,u1,…使得</p>
 <p>x0,x1,…足够小，即系统达到稳定状态</p>
 <p>u0,u1,…足够小，即<strong>花费最小的控制代价</strong></p>
-<p>为达到上述效果，定义代价函数</p>
-<script type="math/tex; mode=display">
-J=\sum_{\tau=0}^{N-1}(x_{\tau}^TQx_{\tau}+u_{\tau}^TRu_{\tau})+x_{N}^TQ_fx_N</script><p>其中x为状态量，u为控制量，Q为状态权重矩阵，R为控制权重矩阵，Qf为最终权重矩阵，N为达到最终状态的控制序列数。</p>
+<p>为达到上述效果，定义代价函数<br>$$<br>J=\sum_{\tau=0}^{N-1}(x_{\tau}^TQx_{\tau}+u_{\tau}^TRu_{\tau})+x_{N}^TQ_fx_N<br>$$</p>
+<p>其中x为状态量，u为控制量，Q为状态权重矩阵，R为控制权重矩阵，Qf为最终权重矩阵，N为达到最终状态的控制序列数。</p>
 
       
     </div>
