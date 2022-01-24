@@ -179,7 +179,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-01-24 17:37:25 / Modified: 18:34:21" itemprop="dateCreated datePublished" datetime="2022-01-24T17:37:25+08:00">2022-01-24</time>
+      <time title="Created: 2022-01-24 17:37:25 / Modified: 21:41:19" itemprop="dateCreated datePublished" datetime="2022-01-24T17:37:25+08:00">2022-01-24</time>
     </span>
 
   
@@ -223,8 +223,69 @@
 <p>$B\in R^{n\times r}$表征了输入对状态的作用，称为控制矩阵</p>
 <p>$C\in R^{m\times n}$表征了输出与状态变量的关系，称为输出矩阵</p>
 <p>$D\in R^{m\times r}$表征了输出与输入的关系，称为直接传输矩阵</p>
-<p>状态空间表达式可以用系统方框图描述：</p>
-<p><img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png" alt="系统方框图"></p>
+<ol>
+<li>状态空间表达式可以用系统方框图描述：<img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png" alt="系统方框图"></li>
+<li>输入引起系统状态变化，而状态和输入则决定了输出的变化</li>
+<li>状态空间表达式的方框图，只含有比例、积分和加法三类基本环节</li>
+<li>在输出方程中，若无特殊 声明，均不考虑输入向量的直接传输，即令D=0</li>
+</ol>
+<h3 id="1-2状态空间表达式的建立"><a href="#1-2状态空间表达式的建立" class="headerlink" title="1.2状态空间表达式的建立"></a>1.2状态空间表达式的建立</h3><h4 id="一、根据系统的方框图列写"><a href="#一、根据系统的方框图列写" class="headerlink" title="一、根据系统的方框图列写"></a>一、根据系统的方框图列写</h4><p>状态空间表达式方框图的基本环节：</p>
+<ol>
+<li>比例</li>
+<li>积分</li>
+<li>加法</li>
+</ol>
+<p>方框图法基本步骤：</p>
+<ol>
+<li>方框图变换，将相同方框图中的各环节变换为只包含比例。积分和加法环节的方框图。</li>
+<li>选取状态变量，将每一个积分器的输出选座一个状态变量。</li>
+<li>根据方框图个环节的关联关系，列写状态的空间表达式。</li>
+</ol>
+<h4 id="二、从系统的基本原理进行推导"><a href="#二、从系统的基本原理进行推导" class="headerlink" title="二、从系统的基本原理进行推导"></a>二、从系统的基本原理进行推导</h4><h4 id="三、根据传递函数或高阶微分方程实现"><a href="#三、根据传递函数或高阶微分方程实现" class="headerlink" title="三、根据传递函数或高阶微分方程实现"></a>三、根据传递函数或高阶微分方程实现</h4><h5 id="控制系统的外部描述"><a href="#控制系统的外部描述" class="headerlink" title="控制系统的外部描述"></a>控制系统的外部描述</h5><p>​    描述控制系统的外部特征，即描述系统的输入、输出关系</p>
+<h5 id="控制系统的内部描述"><a href="#控制系统的内部描述" class="headerlink" title="控制系统的内部描述"></a>控制系统的内部描述</h5><p>​    不仅可以描述系统的输入输出关系，而且还能够揭示出系统内部各变量的关联关系</p>
+<h5 id="实现问题"><a href="#实现问题" class="headerlink" title="实现问题"></a>实现问题</h5><p>​    由输入输出描述确定状态空间描述的问题称为实现问题。</p>
+<p>​    即若对于单输入、单输出的线性定常系统，已知描述系统动态过程的微分方程或传递函数，求出状态空间表达式</p>
+<p>说明：</p>
+<ol>
+<li><p>$Y(s)=G(s)U(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>当m&lt;n，输入输出不存在比例关系，D=0。</p>
+<p>当m&gt;n，输出将含有输入信号的直接微分项。这在实际系统中是不允许的，状态空间表达式也无法表达。</p>
+<p>因此，实现存在条件：$m\le n$</p>
+</li>
+<li><p>实现的非唯一性，有无穷多个状态空间表达式，实现戈丁的输入输出关系</p>
+</li>
+<li><p>没有零极点对消的传递函数的实现称为最小实现</p>
+</li>
+</ol>
+<h5 id="单输入单输出系统的实现方法一"><a href="#单输入单输出系统的实现方法一" class="headerlink" title="单输入单输出系统的实现方法一"></a>单输入单输出系统的实现方法一</h5><p>由下图传递函数可得$(m\le n)$<br>$$<br>Y(s)=G(s)U(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)<br>$$</p>
+<ol>
+<li><p>当$m&lt;n$</p>
+<p>引入中间变量$\widetilde Y(s)=\frac{1}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>进而可得$\widetilde Y(s)({s^n+a_{n-1}s^{n-1}+…+a_1s+a_0})=U(s)$</p>
+<p>​                $Y(s)=\widetilde Y(s)(b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0)$</p>
+<p>取拉式反变换可得：<br>$$<br>y=b_{m}\widetilde y^{(m)}+b_{m-1}\widetilde y^{(m-1)}+…+b_{1}\widetilde y^{(1)}+b_{0}\widetilde y \tag{1}<br>$$</p>
+<p>$$<br>\widetilde y^{(n)}+a_{n-1}\widetilde y^{(n-1)}+…+a_1\widetilde y^{(1)}+a_0\widetilde y=u \tag{2}<br>$$</p>
+<p>选取状态变量为：<br>$$<br>x_1=\widetilde y,x_2=\widetilde y^{(1)},…,x_n=\widetilde y^{(n-1)}<br>$$<br>可得状态方程为：<br>$$<br>\dot x_1=x_2,\dot x_2=x_3,…,\dot x_{n-1}=x_n\<br>\dot x_n=\widetilde y^{(n)}=-a_{n-1}y^{(n-1)}-…-a_1\widetilde y^{(1)}-a_0\widetilde x_1+u<br>$$<br>可得输出方程为：<br>$$<br>y=b_mx_{m+1}+b_{m-1}x_m+…+b_1x_2+b_0x_1<br>$$<br>可以得到状态空间表达式：</p>
+<p><img src="/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F.png" alt="状态空间表达式"></p>
+<p>特点：</p>
+<p>系统矩阵A的前n-1行为次对角单位阵，最后一行由传递函数分母的系数，也就是系统特征多项式的系数取相反号组成。</p>
+<p>输入矩阵B，最后一个元素为1，其余元素均为0</p>
+<p>$\color{red}能控标准1型$</p>
+</li>
+<li><p>当m=n</p>
+</li>
+</ol>
+<p>$$<br>Y(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)\<br>=\frac{b_ns^n+b_{n-1}s^{n-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)\<br>=(b_n+\frac{(b_{n-1}-b_na_{n-1})s^{n-1}+…+(b_1-b_na_1)s+(b_0-b_na_0)}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0})U(s)<br>$$</p>
+<p>同理可得：状态空间表达式</p>
+<p><img src="/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8Fmequaln.png" alt="状态空间表达式mequaln"></p>
+<h5 id="单输入单输出系统的实现方法二"><a href="#单输入单输出系统的实现方法二" class="headerlink" title="单输入单输出系统的实现方法二"></a>单输入单输出系统的实现方法二</h5><p>1.当m=n</p>
+<p>由系统的传递函数可得：$Y(s)=\frac{b_ns^n+b_{n-1}s^{n-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>取拉氏反变换，可得：<br>$$<br>y^{(n)}+a_{n-1}y^{(n-1)}+…+a_1y^{(1)}+a_0y=b_nu^{(n)}+b_{n-1}u^{n-1}+…+b_1u^{(1)}+b_0u<br>$$<br>选取状态变量，令：</p>
+<p><img src="/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F.png" alt="SISO2状态变量"></p>
+<p>写成矩阵形式，得到含有特定系数及待求变量的状态方程：</p>
+<p><img src="/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%E7%9F%A9%E9%98%B5.png" alt="SISO2状态变量矩阵"></p>
+<p>求待定系数和变量</p>
+<p><img src="/images/modern-control-theory/SISO2step2.png" alt="SISO2step2"></p>
 
       
     </div>
