@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>modern_control_theory | MyTrave1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1.1状态空间变量及状态空间表达式一、状态变量足以完全表征系统运动状态的最少个数的一组变量，称为状态变量 完全表征：只要给出状态变量的初值$x(t_0)$以及$t\ge t_0$的输入$u(t)$，就能够完全确定系统在时间$t\ge t_0$的动态行为。 说明：  状态变量相互独立 对于实际物理系统来说，状态变量个数等于系统中独立储能元件的个数（电容、电感） 状态变量选取不唯一，但个数确定  二、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="modern_control_theory">
+<meta property="og:url" content="http://example.com/2022/01/24/modern-control-theory/index.html">
+<meta property="og:site_name" content="MyTrave1">
+<meta property="og:description" content="1.1状态空间变量及状态空间表达式一、状态变量足以完全表征系统运动状态的最少个数的一组变量，称为状态变量 完全表征：只要给出状态变量的初值$x(t_0)$以及$t\ge t_0$的输入$u(t)$，就能够完全确定系统在时间$t\ge t_0$的动态行为。 说明：  状态变量相互独立 对于实际物理系统来说，状态变量个数等于系统中独立储能元件的个数（电容、电感） 状态变量选取不唯一，但个数确定  二、">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8Fmequaln.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%E7%9F%A9%E9%98%B5.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2step2.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2step3.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2step4.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/SISO2step5.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E7%89%B9%E5%BE%81%E6%A0%B9%E4%B8%8D%E5%8F%98%E6%80%A7.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E6%A0%87%E5%87%86%E5%9E%8B%E5%AF%B9%E8%A7%92%E8%A7%84%E8%8C%83%E5%9E%8B%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%BA%A6%E5%BD%93%E8%A7%84%E8%8C%83%E5%9E%8B.png">
+<meta property="og:image" content="http://example.com/images/modern-control-theory/%E7%BA%A6%E5%BD%93%E5%9D%97.png">
+<meta property="article:published_time" content="2022-01-24T09:37:25.000Z">
+<meta property="article:modified_time" content="2022-01-25T07:03:08.218Z">
+<meta property="article:author" content="wex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png">
+  
+    <link rel="alternate" href="/atom.xml" title="MyTrave1" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MyTrave1</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-modern-control-theory" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/24/modern-control-theory/" class="article-date">
+  <time class="dt-published" datetime="2022-01-24T09:37:25.000Z" itemprop="datePublished">2022-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      modern_control_theory
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1-1状态空间变量及状态空间表达式"><a href="#1-1状态空间变量及状态空间表达式" class="headerlink" title="1.1状态空间变量及状态空间表达式"></a>1.1状态空间变量及状态空间表达式</h3><h4 id="一、状态变量"><a href="#一、状态变量" class="headerlink" title="一、状态变量"></a>一、状态变量</h4><p>足以完全表征系统运动状态的最少个数的一组变量，称为状态变量</p>
+<p>完全表征：只要给出状态变量的初值$x(t_0)$以及$t\ge t_0$的输入$u(t)$，就能够完全确定系统在时间$t\ge t_0$的动态行为。</p>
+<p>说明：</p>
+<ul>
+<li>状态变量相互独立</li>
+<li>对于实际物理系统来说，状态变量个数等于系统中独立储能元件的个数（电容、电感）</li>
+<li>状态变量选取不唯一，但个数确定</li>
+</ul>
+<h4 id="二、状态向量"><a href="#二、状态向量" class="headerlink" title="二、状态向量"></a>二、状态向量</h4><p>由系统<strong>状态变量</strong>构成的向量，称为系统的<strong>状态向量</strong></p>
+<h4 id="三、状态空间"><a href="#三、状态空间" class="headerlink" title="三、状态空间"></a>三、状态空间</h4><p>以状态向量的每一个分量为坐标轴所构成的空间，称为状态空间</p>
+<ul>
+<li>系统任意时刻的状态均可表示为状态空间中的一个点</li>
+<li>系统状态随时间变化的过程，在状态空间中描绘出一条轨迹，称为<strong>状态轨迹</strong></li>
+</ul>
+<h4 id="四、状态方程"><a href="#四、状态方程" class="headerlink" title="四、状态方程"></a>四、状态方程</h4><p>由系统变量构成的描述系统动态过程的一届微分方程组，称为系统的状态方程</p>
+<ol>
+<li>状态方程用于描述系统输入引起系统状态变化的动态过程</li>
+<li>状态方程的一般形式为：$\dot x=Ax+Bu$</li>
+</ol>
+<h4 id="五、输出方程"><a href="#五、输出方程" class="headerlink" title="五、输出方程"></a>五、输出方程</h4><p>​    在指定系统输出y的情况下，输出y向量与状态向量x及系统输入u向量的函数关系，称为系统的<strong>输出方程</strong>。</p>
+<ol>
+<li>系统的状态和输入决定了相同输出的变化</li>
+<li>系统输出方程的一般形式为$y=Cx+Du$</li>
+</ol>
+<h4 id="六、状态空间表达式"><a href="#六、状态空间表达式" class="headerlink" title="六、状态空间表达式"></a>六、状态空间表达式</h4><p>​    <strong>状态方程和输出方程</strong>总和起来，构成对一个系统的完整动态描述，称为系统的<strong>状态空间表达式</strong>。</p>
+<p>​    对于n个状态变量、r个输入、m个输出的动态系统，状态空间表达式的一般形式为<br>$$<br>\dot x=Ax+Bu<br>$$</p>
+<p>$$<br>y=Cx+Du<br>$$</p>
+<p>$A\in R^{n\times n}$ 表征了相同内部状态的联系，称为系统矩阵</p>
+<p>$B\in R^{n\times r}$表征了输入对状态的作用，称为控制矩阵</p>
+<p>$C\in R^{m\times n}$表征了输出与状态变量的关系，称为输出矩阵</p>
+<p>$D\in R^{m\times r}$表征了输出与输入的关系，称为直接传输矩阵</p>
+<ol>
+<li>状态空间表达式可以用系统方框图描述：<img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%86%E5%9B%BE.png" alt="系统方框图"></li>
+<li>输入引起系统状态变化，而状态和输入则决定了输出的变化</li>
+<li>状态空间表达式的方框图，只含有比例、积分和加法三类基本环节</li>
+<li>在输出方程中，若无特殊 声明，均不考虑输入向量的直接传输，即令D=0</li>
+</ol>
+<h3 id="1-2状态空间表达式的建立"><a href="#1-2状态空间表达式的建立" class="headerlink" title="1.2状态空间表达式的建立"></a>1.2状态空间表达式的建立</h3><h4 id="一、根据系统的方框图列写"><a href="#一、根据系统的方框图列写" class="headerlink" title="一、根据系统的方框图列写"></a>一、根据系统的方框图列写</h4><p>状态空间表达式方框图的基本环节：</p>
+<ol>
+<li>比例</li>
+<li>积分</li>
+<li>加法</li>
+</ol>
+<p>方框图法基本步骤：</p>
+<ol>
+<li>方框图变换，将相同方框图中的各环节变换为只包含比例。积分和加法环节的方框图。</li>
+<li>选取状态变量，将每一个积分器的输出选座一个状态变量。</li>
+<li>根据方框图个环节的关联关系，列写状态的空间表达式。</li>
+</ol>
+<h4 id="二、从系统的基本原理进行推导"><a href="#二、从系统的基本原理进行推导" class="headerlink" title="二、从系统的基本原理进行推导"></a>二、从系统的基本原理进行推导</h4><h4 id="三、根据传递函数或高阶微分方程实现"><a href="#三、根据传递函数或高阶微分方程实现" class="headerlink" title="三、根据传递函数或高阶微分方程实现"></a>三、根据传递函数或高阶微分方程实现</h4><h5 id="控制系统的外部描述"><a href="#控制系统的外部描述" class="headerlink" title="控制系统的外部描述"></a>控制系统的外部描述</h5><p>​    描述控制系统的外部特征，即描述系统的输入、输出关系</p>
+<h5 id="控制系统的内部描述"><a href="#控制系统的内部描述" class="headerlink" title="控制系统的内部描述"></a>控制系统的内部描述</h5><p>​    不仅可以描述系统的输入输出关系，而且还能够揭示出系统内部各变量的关联关系</p>
+<h5 id="实现问题"><a href="#实现问题" class="headerlink" title="实现问题"></a>实现问题</h5><p>​    由输入输出描述确定状态空间描述的问题称为实现问题。</p>
+<p>​    即若对于单输入、单输出的线性定常系统，已知描述系统动态过程的微分方程或传递函数，求出状态空间表达式</p>
+<p>说明：</p>
+<ol>
+<li><p>$Y(s)=G(s)U(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>当m&lt;n，输入输出不存在比例关系，D=0。</p>
+<p>当m&gt;n，输出将含有输入信号的直接微分项。这在实际系统中是不允许的，状态空间表达式也无法表达。</p>
+<p>因此，实现存在条件：$m\le n$</p>
+</li>
+<li><p>实现的非唯一性，有无穷多个状态空间表达式，实现戈丁的输入输出关系</p>
+</li>
+<li><p>没有零极点对消的传递函数的实现称为最小实现</p>
+</li>
+</ol>
+<h5 id="单输入单输出系统的实现方法一"><a href="#单输入单输出系统的实现方法一" class="headerlink" title="单输入单输出系统的实现方法一"></a>单输入单输出系统的实现方法一</h5><p>由下图传递函数可得$(m\le n)$<br>$$<br>Y(s)=G(s)U(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)<br>$$</p>
+<ol>
+<li><p>当$m&lt;n$</p>
+<p>引入中间变量$\widetilde Y(s)=\frac{1}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>进而可得$\widetilde Y(s)({s^n+a_{n-1}s^{n-1}+…+a_1s+a_0})=U(s)$</p>
+<p>​                $Y(s)=\widetilde Y(s)(b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0)$</p>
+<p>取拉式反变换可得：<br>$$<br>y=b_{m}\widetilde y^{(m)}+b_{m-1}\widetilde y^{(m-1)}+…+b_{1}\widetilde y^{(1)}+b_{0}\widetilde y \tag{1}<br>$$</p>
+<p>$$<br>\widetilde y^{(n)}+a_{n-1}\widetilde y^{(n-1)}+…+a_1\widetilde y^{(1)}+a_0\widetilde y=u \tag{2}<br>$$</p>
+<p>选取状态变量为：<br>$$<br>x_1=\widetilde y,x_2=\widetilde y^{(1)},…,x_n=\widetilde y^{(n-1)}<br>$$<br>可得状态方程为：<br>$$<br>\dot x_1=x_2,\dot x_2=x_3,…,\dot x_{n-1}=x_n\<br>\dot x_n=\widetilde y^{(n)}=-a_{n-1}y^{(n-1)}-…-a_1\widetilde y^{(1)}-a_0\widetilde x_1+u<br>$$<br>可得输出方程为：<br>$$<br>y=b_mx_{m+1}+b_{m-1}x_m+…+b_1x_2+b_0x_1<br>$$<br>可以得到状态空间表达式：</p>
+<p><img src="/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8F.png" alt="状态空间表达式"></p>
+<p>特点：</p>
+<p>系统矩阵A的前n-1行为次对角单位阵，最后一行由传递函数分母的系数，也就是系统特征多项式的系数取相反号组成。</p>
+<p>输入矩阵B，最后一个元素为1，其余元素均为0</p>
+<p>$\color{red}能控标准1型$</p>
+</li>
+<li><p>当m=n</p>
+</li>
+</ol>
+<p>$$<br>Y(s)=\frac{b_ms^m+b_{m-1}s^{m-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)\<br>=\frac{b_ns^n+b_{n-1}s^{n-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)\<br>=(b_n+\frac{(b_{n-1}-b_na_{n-1})s^{n-1}+…+(b_1-b_na_1)s+(b_0-b_na_0)}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0})U(s)<br>$$</p>
+<p>同理可得：状态空间表达式</p>
+<p><img src="/images/modern-control-theory/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E8%A1%A8%E8%BE%BE%E5%BC%8Fmequaln.png" alt="状态空间表达式mequaln"></p>
+<h5 id="单输入单输出系统的实现方法二"><a href="#单输入单输出系统的实现方法二" class="headerlink" title="单输入单输出系统的实现方法二"></a>单输入单输出系统的实现方法二</h5><p>1.当m=n</p>
+<p>由系统的传递函数可得：$Y(s)=\frac{b_ns^n+b_{n-1}s^{n-1}+…+b_1s+b_0}{s^n+a_{n-1}s^{n-1}+…+a_1s+a_0}U(s)$</p>
+<p>取拉氏反变换，可得：<br>$$<br>y^{(n)}+a_{n-1}y^{(n-1)}+…+a_1y^{(1)}+a_0y=b_nu^{(n)}+b_{n-1}u^{n-1}+…+b_1u^{(1)}+b_0u<br>$$<br>选取状态变量，令：</p>
+<p><img src="/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F.png" alt="SISO2状态变量"></p>
+<p>写成矩阵形式，得到含有特定系数及待求变量的状态方程：</p>
+<p><img src="/images/modern-control-theory/SISO2%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%E7%9F%A9%E9%98%B5.png" alt="SISO2状态变量矩阵"></p>
+<p>求待定系数和变量</p>
+<p><img src="/images/modern-control-theory/SISO2step2.png" alt="SISO2step2"></p>
+<p><img src="/images/modern-control-theory/SISO2step3.png" alt="SISO2step3"></p>
+<p><img src="/images/modern-control-theory/SISO2step4.png" alt="SISO2step4"></p>
+<p><img src="/images/modern-control-theory/SISO2step5.png" alt="SISO2step5"></p>
+<p>2.当m&lt;n时：与所讨论情形的等价</p>
+<p>$\color{red}能观标准1型$</p>
+<h5 id="多输入多输出系统实现方法"><a href="#多输入多输出系统实现方法" class="headerlink" title="多输入多输出系统实现方法"></a>多输入多输出系统实现方法</h5><p>可采用方框图法，依据高阶微分方程组，画出锁对应的方框图，再根据方框图列写状态空间表达式。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
+<li>方框图法：每一个积分器的输出选为状态变量</li>
+<li>机理法：每一个独立储能元件，选一个变量作为状态变量</li>
+<li>实现方法1：传递函数分母分子输入的拉氏反变换，即各界导数作为状态变量</li>
+<li>实现方法2：系统时输入、输出各阶导数的线性组合选作状态变量</li>
+</ol>
+<h3 id="1-3-状态向量的线性变换"><a href="#1-3-状态向量的线性变换" class="headerlink" title="1.3 状态向量的线性变换"></a>1.3 状态向量的线性变换</h3><h4 id="一、状态空间空间表达式的非唯一性"><a href="#一、状态空间空间表达式的非唯一性" class="headerlink" title="一、状态空间空间表达式的非唯一性"></a>一、状态空间空间表达式的非唯一性</h4><p>同一系统不同状态向量之间必然存在一种线性变换的关系<br>$$<br>\dot x=Ax+Bu<br>$$</p>
+<p>$$<br>y=Cx+Du<br>$$</p>
+<p>$$<br>x(0)=x_0<br>$$</p>
+<p>对于任意给定的$z\times z$阶非奇异矩阵T,做如下变换：<br>$$<br>z=T^{-1}x<br>$$<br>则z也一定是给定系统的另一个状态向量</p>
+<p>将 $x=Tz$代入到状态空间表达式为：<br>$$<br>T\dot z = ATz+Bu\<br>y=CTz+Du\<br>Tz(0)=x_0<br>$$<br>状态方程和初值两端同乘T的逆：<br>$$<br>\dot z = T^{-1}ATz+T^{-1}Bu\<br>y=CTz+Du\<br>z(0)=T^{-1}x_0<br>$$<br>则有系统新的状态空间表达式：<br>$$<br>\dot z = \bar Az+\bar Bu\<br>y=\bar Cz+\bar Du\<br>z(0)=z_0<br>$$<br>其中，$\bar A=T^{-1}AT$，$\bar B=T^{-1}B$，$\bar C =CT$，$\bar D=D$，$z_0=T^{-1}x_0$</p>
+<p>由于T是任意非奇异矩阵，故系统的状态空间表达式是非唯一的</p>
+<h4 id="二、系统特征根的不变性"><a href="#二、系统特征根的不变性" class="headerlink" title="二、系统特征根的不变性"></a>二、系统特征根的不变性</h4><p>定义：系统状态空间表达式中系统系统矩阵A的特征值称为系统的特征值</p>
+<p>非奇异线性变换不改变系统的特征值</p>
+<p><img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E7%89%B9%E5%BE%81%E6%A0%B9%E4%B8%8D%E5%8F%98%E6%80%A7.png" alt="系统特征根不变性"></p>
+<p>（放心大胆对系统进行各种线性变换，将状态空间表达式变换成便于分析的形式）</p>
+<h4 id="三、状态空间表达式的对角规范型和约当规范型"><a href="#三、状态空间表达式的对角规范型和约当规范型" class="headerlink" title="三、状态空间表达式的对角规范型和约当规范型"></a>三、状态空间表达式的对角规范型和约当规范型</h4><h5 id="对角规范型"><a href="#对角规范型" class="headerlink" title="对角规范型"></a>对角规范型</h5><p>在对角规范型下，个状态变量间实现了完全解耦，可表示为n个独立的状态变量方程。</p>
+<p><img src="/images/modern-control-theory/%E6%A0%87%E5%87%86%E5%9E%8B%E5%AF%B9%E8%A7%92%E8%A7%84%E8%8C%83%E5%9E%8B%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5.png" alt="标准型对角规范型变换矩阵"></p>
+<h5 id="约当规范型"><a href="#约当规范型" class="headerlink" title="约当规范型"></a>约当规范型</h5><h6 id="特征根的代数重数和几何重数"><a href="#特征根的代数重数和几何重数" class="headerlink" title="特征根的代数重数和几何重数"></a>特征根的代数重数和几何重数</h6><p>设$\lambda_i$为系统矩阵A的特征值，若$\lambda_i$的重根数为$\sigma_i$，则称$\lambda_i$的<strong>代数重数</strong>为$\sigma_i$。</p>
+<p>设V为n维线性空间，$\lambda_i$为系统矩阵A的特征值，则$\lambda_i$的特征子空间</p>
+<p>$V_{\lambda_i}={p_i\in V|Ap_i=\lambda_ip_i}$的维数$\alpha_i$，称为$\lambda_i$的特征值的<strong>几何重数</strong></p>
+<p>$\lambda_i$的几何重数$\alpha_i$也就是$\lambda_i$线性无关特征向量的个数</p>
+<h6 id="系统的广义特征向量"><a href="#系统的广义特征向量" class="headerlink" title="系统的广义特征向量"></a>系统的广义特征向量</h6><p>对于$n\times n$维矩阵A，若存在一个不为零的n维向量$p_i$和一个标量$\lambda_i$，k为正整数，使得<br>$$<br>(A-\lambda_iI)^kp_i=0\<br>(A-\lambda_iI)^{k-1}p_i=0<br>$$<br>成立，则称$p_i$为矩阵A的特征值$\lambda_i$对应的k级广义特征向量</p>
+<p><img src="/images/modern-control-theory/%E7%BA%A6%E5%BD%93%E8%A7%84%E8%8C%83%E5%9E%8B.png" alt="约当规范型"></p>
+<p><img src="/images/modern-control-theory/%E7%BA%A6%E5%BD%93%E5%9D%97.png" alt="约当块"></p>
+<p>1.4 从状态空间表达式求传递函数矩阵</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/01/24/modern-control-theory/" data-id="ckyts3uv10004e8ue9n679xn4" data-title="modern_control_theory" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/01/25/optimal-control1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          optimal_control1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/24/log/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">log</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/25/optimal-control1/">optimal_control1</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/24/modern-control-theory/">modern_control_theory</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/24/log/">log</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/24/LQR/">LQR学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/24/note/">note</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 wex<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
