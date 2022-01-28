@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="C++的动态绑定和静态绑定深入理解C++的动态绑定和静态绑定 1.对象的静态类型：对象在声明时采用的类型，是在编译期确定的 2.对象的动态类型：目前所指对象的类型。 是在运行期决定的，对象的动态类型可以更改，静态类型无法更改。 示例： 12345678910111213class B&amp;#123;&amp;#125;class C : public B&amp;#123;&amp;#125;class D : public">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp">
+<meta property="og:url" content="http://example.com/2022/01/26/cpp/index.html">
+<meta property="og:site_name" content="MyTrave1">
+<meta property="og:description" content="C++的动态绑定和静态绑定深入理解C++的动态绑定和静态绑定 1.对象的静态类型：对象在声明时采用的类型，是在编译期确定的 2.对象的动态类型：目前所指对象的类型。 是在运行期决定的，对象的动态类型可以更改，静态类型无法更改。 示例： 12345678910111213class B&amp;#123;&amp;#125;class C : public B&amp;#123;&amp;#125;class D : public">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-26T13:19:32.000Z">
+<meta property="article:modified_time" content="2022-01-27T02:49:44.186Z">
+<meta property="article:author" content="wex">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/01/26/cpp/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/26/cpp/","path":"2022/01/26/cpp/","title":"cpp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>cpp | MyTrave1</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MyTrave1</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E7%9A%84%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E5%92%8C%E9%9D%99%E6%80%81%E7%BB%91%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">C++的动态绑定和静态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">纯虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">左值右值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BE%8B%E5%AD%90"><span class="nav-number">3.0.1.</span> <span class="nav-text">基本例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">左值和右值转换</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">wex</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/26/cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyTrave1">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cpp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-26 21:19:32" itemprop="dateCreated datePublished" datetime="2022-01-26T21:19:32+08:00">2022-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-01-27 10:49:44" itemprop="dateModified" datetime="2022-01-27T10:49:44+08:00">2022-01-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="C-的动态绑定和静态绑定"><a href="#C-的动态绑定和静态绑定" class="headerlink" title="C++的动态绑定和静态绑定"></a>C++的动态绑定和静态绑定</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chgaowei/article/details/6427731">深入理解C++的动态绑定和静态绑定</a></p>
+<p>1.对象的静态类型：对象在声明时采用的类型，是在编译期确定的</p>
+<p>2.对象的动态类型：目前所指对象的类型。</p>
+<p>是在运行期决定的，对象的动态类型可以更改，静态类型无法更改。</p>
+<p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> :</span> <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">D* pD = <span class="keyword">new</span> <span class="built_in">D</span>();<span class="comment">//pD的静态类型是它声明的类型D*，动态类型也是D*</span></span><br><span class="line">B* pB = pD;<span class="comment">//pB的静态类型是它声明的类型B*，动态类型是pB所指向的对象pD的类型D*</span></span><br><span class="line">C* pC = <span class="keyword">new</span> <span class="built_in">C</span>();</span><br><span class="line">pB = pC;<span class="comment">//pB的动态类型是可以更改的，现在它的动态类型是C*</span></span><br></pre></td></tr></table></figure>
+
+<p>3.静态绑定：绑定的是对象的静态类型，某特性（比如函数）依赖对象的静态类型,发生在编译期</p>
+<p>4.动态绑定：绑定的是对象的动态类型，某特性（比如函数）依赖对象的动态类型，发生在运行期</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoSomething</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> :</span> <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoSomething</span><span class="params">()</span></span>;<span class="comment">//首先说明一下，这个子类重新定义了父类的no-virtual函数，这是一个不好的设计，会导致名称遮掩；这里只是为了说明动态绑定和静态绑定才这样使用。</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> :</span> <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoSomething</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">vfun</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">D* pD = <span class="keyword">new</span> <span class="built_in">D</span>();</span><br><span class="line">B* pB = pD;</span><br></pre></td></tr></table></figure>
+
+<p>让我们看一下，pD-&gt;DoSomething()和pB-&gt;DoSomething()调用的是同一个函数吗？<br>不是的，虽然pD和pB都指向同一个对象。因为函数DoSomething是一个no-virtual函数，它是静态绑定的，也就是编译器会在编译期根据对象的静态类型来选择函数。pD的静态类型是D<em>，那么编译器在处理pD-&gt;DoSomething()的时候会将它指向D::DoSomething()。同理，pB的静态类型是B</em>，那pB-&gt;DoSomething()调用的就是B::DoSomething()。</p>
+<p>让我们再来看一下，pD-&gt;vfun()和pB-&gt;vfun()调用的是同一个函数吗？<br>是的。因为vfun是一个虚函数，它动态绑定的，也就是说它绑定的是对象的动态类型，pB和pD虽然静态类型不同，但是他们同时指向一个对象，他们的动态类型是相同的，都是D*，所以，他们的调用的是同一个函数：D::vfun()。</p>
+<h3 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37331092">C++ 虚函数、纯虚函数</a></p>
+<p>纯虚函数是在基类中声明的虚函数，它要求任何派生类都要定义自己的实现方法，以实现多态性。实现了纯虚函数的子类，该纯虚函数在子类中就变成了虚函数。</p>
+<p>定义纯虚函数是为了实现一个接口，用来规范派生类的行为，也即规范继承这个类的程序员必须实现这个函数。派生类仅仅只是继承函数的接口。纯虚函数的意义在于，让所有的类对象（主要是派生类对象）都可以执行纯虚函数的动作，但基类无法为纯虚函数提供一个合理的缺省实现。所以类纯虚函数的声明就是在告诉子类的设计者，“你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。</p>
+<p>含有纯虚函数的类称之为抽象类，它不能生成对象（创建实例），只能创建它的派生类的实例。抽象类是一种特殊的类，它是为了抽象和设计的目的为建立的，它处于继承层次结构的较上层。抽象类的主要作用是将有关的操作作为结果接口组织在一个继承层次结构中，由它来为派生类提供一个公共的根，派生类将具体实现在其基类中作为接口的操作。</p>
+<p>抽象类只能作为基类来使用，其纯虚函数的实现由派生类给出。如果派生类中没有重新定义纯虚函数，而只是继承基类的纯虚函数，则这个派生类仍然还是一个抽象类。如果派生类中给出了基类纯虚函数的实现，则该派生类就不再是抽象类了，它是一个可以建立对象的具体的类。</p>
+<h3 id="左值右值"><a href="#左值右值" class="headerlink" title="左值右值"></a>左值右值</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuwqiang1994/article/details/79924310">理解C和C++中的左值和右值</a></p>
+<p>左值(lvalue)代表一个再内存中占有确定位置的对象</p>
+<p>右值(rvalue)通过排他性定义，每个表达式不是Ivalue就是rvalue。</p>
+<h5 id="基本例子"><a href="#基本例子" class="headerlink" title="基本例子"></a>基本例子</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> var;</span><br><span class="line">var = <span class="number">4</span>;</span><br><span class="line"><span class="number">4</span> = var;        <span class="comment">//ERROR!</span></span><br><span class="line">(var + <span class="number">10</span>) = <span class="number">4</span>; <span class="comment">//ERROR!</span></span><br></pre></td></tr></table></figure>
+
+<p>常量4和表达式var+1都不是lvalue，它们没有确定的内存空间（只是计算的周期驻留在临时的寄存器中）</p>
+<h4 id="左值和右值转换"><a href="#左值和右值转换" class="headerlink" title="左值和右值转换"></a>左值和右值转换</h4><p>通常来说，语言构造一个对象的值要求右值作为它的参数。例如，二元加运算符 ‘+’ 要求两个右值作为它的参数并且返回一个右值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;     <span class="comment">//a是一个左值</span></span><br><span class="line"><span class="keyword">int</span> b = <span class="number">2</span>;     <span class="comment">//b是一个左值</span></span><br><span class="line"><span class="keyword">int</span> c = a + b; <span class="comment">//＋需要右值，所以a和b都转换成右值，并且返回一个右值</span></span><br></pre></td></tr></table></figure>
+
+<p>右值可以显式地分配给左值。 缺少隐式转换意味着右值不能用于需要左值的地方。 但右值可以使用显式的方法产生左值。</p>
+<p>例如，一元运算符‘*’（解引用）拿一个右值作为参数而产生一个左值作为结果。考虑下面有效的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>* p = &amp;arr[<span class="number">0</span>];</span><br><span class="line">*(p + <span class="number">1</span>) = <span class="number">10</span>;    <span class="comment">//对的：p+1是一个右值，但是*(p+1)是一个左值</span></span><br></pre></td></tr></table></figure>
+
+<p>相反的，一元取地址符 ‘&amp;’ 拿一个左值作为参数并且生成一个右值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> var = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>* bad_addr = &amp;(var + <span class="number">1</span>); <span class="comment">//错误：‘&amp;’运算符要求一个左值</span></span><br><span class="line"><span class="keyword">int</span>* addr = &amp;var;           <span class="comment">//正确：var是左值</span></span><br><span class="line">&amp;var = <span class="number">40</span>;                  <span class="comment">//错误：赋值运算符的左操作数要求一个左值</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/25/optimal-control1/" rel="prev" title="optimal_control1">
+                  <i class="fa fa-chevron-left"></i> optimal_control1
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wex</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
