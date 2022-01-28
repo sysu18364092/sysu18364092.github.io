@@ -356,7 +356,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-01-25 16:58:29" itemprop="dateModified" datetime="2022-01-25T16:58:29+08:00">2022-01-25</time>
+      <time title="Modified: 2022-01-28 16:16:09" itemprop="dateModified" datetime="2022-01-28T16:16:09+08:00">2022-01-28</time>
     </span>
 
   
@@ -497,6 +497,13 @@
 <h3 id="1-4-从状态空间表达式求传递函数矩阵"><a href="#1-4-从状态空间表达式求传递函数矩阵" class="headerlink" title="1.4 从状态空间表达式求传递函数矩阵"></a>1.4 从状态空间表达式求传递函数矩阵</h3><h4 id="一、传递函数矩阵的定义"><a href="#一、传递函数矩阵的定义" class="headerlink" title="一、传递函数矩阵的定义"></a>一、传递函数矩阵的定义</h4><p>定义：对于多输入－多输出线性定常系统，输入向量为$u=[u_1\ u_2\ … u_r]^T$, 输出向量为$y=[y_1\ y_2\ … y_m]^T$, 且假定初始状态为零。$\hat{u}_i(s),\hat{u}<em>i(s)$分别表示 $u_i,y_i$ 的拉氏变换， $w</em>{ij}(s)$表示第j个输入端到第i个输出端的传递函数，系统的输入输出关系可描述为:</p>
 <p><img src="/images/modern-control-theory/%E7%B3%BB%E7%BB%9F%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5.png" alt="系统传递函数矩阵"></p>
 <h4 id="二、由状态空间表达式导出传递函数矩阵"><a href="#二、由状态空间表达式导出传递函数矩阵" class="headerlink" title="二、由状态空间表达式导出传递函数矩阵"></a>二、由状态空间表达式导出传递函数矩阵</h4><p><img src="/images/modern-control-theory/%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E7%9F%A9%E9%98%B5%E6%8E%A8%E5%AF%BC.png" alt="传递函数矩阵推导"></p>
+<h4 id="三、传递函数矩阵的唯一性"><a href="#三、传递函数矩阵的唯一性" class="headerlink" title="三、传递函数矩阵的唯一性"></a>三、传递函数矩阵的唯一性</h4><h4 id="四、组合系统的状态空间表达式和传递函数矩阵"><a href="#四、组合系统的状态空间表达式和传递函数矩阵" class="headerlink" title="四、组合系统的状态空间表达式和传递函数矩阵"></a>四、组合系统的状态空间表达式和传递函数矩阵</h4><h3 id="1-5-离散时间系统、时变系统和非线性系统的状态空间表达式"><a href="#1-5-离散时间系统、时变系统和非线性系统的状态空间表达式" class="headerlink" title="1.5 离散时间系统、时变系统和非线性系统的状态空间表达式"></a>1.5 离散时间系统、时变系统和非线性系统的状态空间表达式</h3><h4 id="一、时间离散系统"><a href="#一、时间离散系统" class="headerlink" title="一、时间离散系统"></a>一、时间离散系统</h4><p>离散系统的状态空间表达式可用差分方程组表示<br>$$<br>x(k+1)=Gx(k)+Hu(k)\<br>y(k)=Cx(k)+Du(k)<br>$$</p>
+<h4 id="二、线性时变系统"><a href="#二、线性时变系统" class="headerlink" title="二、线性时变系统"></a>二、线性时变系统</h4><p>线性时变系统的状态空间表达式为：（其系数矩阵的元素中至少有一个元素是时间t的函数）<br>$$<br>\dot x=A(t)x+B(t)u\<br>y=C(t)x+D(t)u<br>$$</p>
+<h4 id="三、非线性系统"><a href="#三、非线性系统" class="headerlink" title="三、非线性系统"></a>三、非线性系统</h4><h5 id="1-非线性时变系统"><a href="#1-非线性时变系统" class="headerlink" title="1.非线性时变系统"></a>1.非线性时变系统</h5><p>$$<br>\dot x=f(x,u,t)\<br>y=g(x,u,t)<br>$$</p>
+<p>式中，f，g为函数向量</p>
+<h5 id="2-非线性定常系统"><a href="#2-非线性定常系统" class="headerlink" title="2.非线性定常系统"></a>2.非线性定常系统</h5><p>$$<br>\dot x=f(x,u)\<br>y=g(x,u)<br>$$</p>
+<p>不含时间t</p>
+<h5 id="3-非线性系统的线性化"><a href="#3-非线性系统的线性化" class="headerlink" title="3.非线性系统的线性化"></a>3.非线性系统的线性化</h5><p>设$x_0,u_0$是非线性系统，</p>
 
       
     </div>
