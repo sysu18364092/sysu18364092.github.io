@@ -177,9 +177,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-02-02 09:41:52 / Modified: 09:55:38" itemprop="dateCreated datePublished" datetime="2022-02-02T09:41:52+08:00">2022-02-02</time>
+      <time title="Created: 2022-02-02 09:41:52" itemprop="dateCreated datePublished" datetime="2022-02-02T09:41:52+08:00">2022-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-02-03 15:13:51" itemprop="dateModified" datetime="2022-02-03T15:13:51+08:00">2022-02-03</time>
     </span>
 
   
@@ -192,7 +198,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="控制系统状态空间表达式的解"><a href="#控制系统状态空间表达式的解" class="headerlink" title="控制系统状态空间表达式的解"></a>控制系统状态空间表达式的解</h1>
+          <p>控制系统状态空间表达式的解，就是求解系统<br>$$<br>\dot x=Ax+Bu\<br>y=Cx+Du\<br>x(0)=x_0<br>$$<br>在给定初始条件$x(0)=x_0$和控制输入$u(t)$共同作用下，状态向量和输出向量的随时间变化的运动规律$x(t),y(t)$</p>
+<h2 id="2-1线性定常齐次状态方程的解"><a href="#2-1线性定常齐次状态方程的解" class="headerlink" title="2.1线性定常齐次状态方程的解"></a>2.1线性定常齐次状态方程的解</h2><p>线性系统一定满足叠加原理，系统在初始状态$x_0$和控制输入$u(t)$共同作用下的运动状态$x(t)$，可以分解为由初始状态$x_0$和控制输入$u(t)$分别单独作用产生的运动状态$x_{0u}(t)$和$x_{0x}(t)$的叠加(零输入响应和零状态响应)。</p>
+<h3 id="一、系统的零输入响应（自由解）"><a href="#一、系统的零输入响应（自由解）" class="headerlink" title="一、系统的零输入响应（自由解）"></a>一、系统的零输入响应（自由解）</h3><p>​    所谓系统的自由解，是指系统输入为零时，由初始状态引起的自由运动，此时，状态方程为齐次微分方程：<br>$$<br>\dot x = Ax<br>$$<br>若初始时刻$t_0$时的状态给定为$x(t_0)=x_0$，则式有唯一确定解：<br>$$<br>x(t)=e^{A(t-t_0)}x_0,t\geq t_0<br>$$<br>若初始时刻从$t=0$开始，即$x(0)=x_0$，其解为：<br>$$<br>x(t)=e^{At}x_0,t\geq 0<br>$$</p>
+<h3 id="二、矩阵指数函数"><a href="#二、矩阵指数函数" class="headerlink" title="二、矩阵指数函数"></a>二、矩阵指数函数</h3><p>由矩阵指数函数的定义：<br>$$<br>e^{At}=I+At+\frac{1}{2!}At^2+…=\sum_{k=0}^{\infty}\frac{1}{k!}A^kt^k<br>$$<br>将$e^{At}$也称为状态转移矩阵。通常记作$\Phi(t)$</p>
+
       
     </div>
 
@@ -345,9 +355,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-01-25 15:04:41 / Modified: 21:58:11" itemprop="dateCreated datePublished" datetime="2022-01-25T15:04:41+08:00">2022-01-25</time>
+      <time title="Created: 2022-01-25 15:04:41" itemprop="dateCreated datePublished" datetime="2022-01-25T15:04:41+08:00">2022-01-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-02-08 20:40:45" itemprop="dateModified" datetime="2022-02-08T20:40:45+08:00">2022-02-08</time>
     </span>
 
   
@@ -360,10 +376,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>在最优控制系统中，由于受控对象是一个动态系统，所有变量都是时间的函数，所以这是动态最优化问题。在动态最优化问题中，目标函数不再是普通函数，而是时间函数的函数，称为泛函数。简称泛函。</p>
+          <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>在最优控制系统中，由于受控对象是一个动态系统，所有变量都是时间的函数，所以这是动态最优化问题。在动态最优化问题中，目标函数不再是普通函数，而是时间函数的函数，称为泛函数。简称泛函。</p>
 <p>例如在时间域$[t_0,t_f]$上的目标泛函为：<br>$$<br>J=\int_{t_0}^{t_f}{L[x(t),u(t),t]dt}\tag{6.4}<br>$$<br>基本约束条件是受控对象的状态方程，如：<br>$$<br>\dot x(t)=f[x(t),u(t),t]\tag{6.5}<br>$$<br>式中，J为标量泛函，对每个控制函数都有一个值与之对应；L为标量函数，它是矢量x(t)和u(t)的函数；x(t)为n维状态矢量；u(t)为r维控制矢量；f为n维矢量函数。</p>
 <p>最优控制问题是要在满足式 (6.5) 的约束条件下寻求最优控制函数 u (t) ， 使式<br>( 6 .4) 的目标泛函取极值(最小或最大)  </p>
-<h1 id="2-研究最优控制的前提条件"><a href="#2-研究最优控制的前提条件" class="headerlink" title="2.研究最优控制的前提条件"></a>2.研究最优控制的前提条件</h1>
+<h2 id="2-研究最优控制的前提条件"><a href="#2-研究最优控制的前提条件" class="headerlink" title="2.研究最优控制的前提条件"></a>2.研究最优控制的前提条件</h2><h3 id="1-受控系统的数学模型"><a href="#1-受控系统的数学模型" class="headerlink" title="1.受控系统的数学模型"></a>1.受控系统的数学模型</h3><p>对连续时间系统<br>$$<br>\dot x(t)=f[x(t),u(t),t]<br>$$<br>对离散时间系统<br>$$<br>x(k+1)=f[x(k),u(k),k]\<br>k=0,1,…,(N-1)<br>$$</p>
+<h3 id="2-受控系统的始端和终端条件，即状态方程的边界条件"><a href="#2-受控系统的始端和终端条件，即状态方程的边界条件" class="headerlink" title="2.受控系统的始端和终端条件，即状态方程的边界条件"></a>2.受控系统的始端和终端条件，即状态方程的边界条件</h3><p>对最优控制的始端条件通常是已知的$x(t_0)=x_0$</p>
+<p>终端条件可以 用一个目标集表示：$\Omega_f={x(t_f);g_1[x(t_f)]=0,g_2[x(t_f)]\leq0}$</p>
+<h3 id="3-明确控制作用域"><a href="#3-明确控制作用域" class="headerlink" title="3.明确控制作用域"></a>3.明确控制作用域</h3><p>控制量受客观条件所能取值的范围：$u(t)\in U,U={u(t);\varphi(x,u)\leq0}$</p>
+<p>$U$称为控制集，$u(t)\in U$的$u(t)$称为<strong>容许控制</strong>。</p>
+<h3 id="4-给出目标泛函，即性能指标"><a href="#4-给出目标泛函，即性能指标" class="headerlink" title="4.给出目标泛函，即性能指标"></a>4.给出目标泛函，即性能指标</h3><h4 id="1-积分型性能指标"><a href="#1-积分型性能指标" class="headerlink" title="(1)积分型性能指标"></a>(1)积分型性能指标</h4><p>$$<br>J=\int_{t_0}^{t_f}L[x(t),u(t),t]dt<br>$$</p>
+<p>反映控制过程中对系统性能的要求</p>
+<h4 id="2-终值型性能指-标"><a href="#2-终值型性能指-标" class="headerlink" title="(2)终值型性能指 标"></a>(2)终值型性能指 标</h4><p>$$<br>J=\Phi[x(t_f),t_f]<br>$$</p>
+<p>反映了系统状态在终端时刻的性能</p>
+<h4 id="3-复合型性能指标"><a href="#3-复合型性能指标" class="headerlink" title="(3)复合型性能指标"></a>(3)复合型性能指标</h4><p>$$<br>J=\Phi[x(t_f),t_f]+\int_{t_0}^{t_f}L[x(t),u(t),t]dt<br>$$</p>
+<p>反映了控制过程和终端时刻对系统性能的要求</p>
+<h4 id="一般提法："><a href="#一般提法：" class="headerlink" title="一般提法："></a>一般提法：</h4><h4 id=""><a href="#" class="headerlink" title=""></a><img src="../images/optimal-control1/%E4%B8%80%E8%88%AC%E6%8F%90%E6%B3%95.png" alt="一般提法"></h4><p>泛函与变分的基本概念</p>
+
       
     </div>
 
